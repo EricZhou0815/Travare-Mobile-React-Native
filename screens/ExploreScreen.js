@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Image,
   Platform,
@@ -6,27 +6,58 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-} from 'react-native';
-
-import { MonoText } from '../components/StyledText';
+  View
+} from "react-native";
+import { CheckBox } from "react-native-elements";
+import Map from "../components/Map/Map";
+import ButtonIcon from "../components/ButtonIcon";
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
-    title: 'Travare',
+    title: "Travare"
   };
+
+  constructor() {
+    super();
+    this.state = {
+      isPassenger: true
+    };
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text>The Map</Text>
-        </View>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>Select Your Role</Text>
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>Driver or Passenger</MonoText>
+        <Map />
+        <View style={styles.tabBarContainer}>
+          <Text>I'm a</Text>
+          <View style={{ flex: 3, flexDirection: "column",alignItems:'left',marginLeft:50 }}>
+            <CheckBox
+              center
+              title="Passenger"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={this.state.isPassenger}
+              onPress={() => this.setState({ isPassenger: !this.state.isPassenger })}
+            />
+            <CheckBox
+              center
+              title="Driver"
+              checkedIcon="dot-circle-o"
+              uncheckedIcon="circle-o"
+              checked={!this.state.isPassenger}
+              onPress={() => this.setState({ isPassenger: !this.state.isPassenger })}
+            />
+          </View>
+          <View style={{flex:2,alignItems:'center'}}>
+            <TouchableOpacity>
+            <ButtonIcon style={{width:100,height:100}}
+              name={
+                Platform.OS === "ios"
+                  ? `ios-add-circle`
+                  : "md-information-circle"
+              }
+            />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -37,88 +68,27 @@ export default class ExploreScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
+  tabBarContainer: {
+    flexDirection: "row",
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     ...Platform.select({
       ios: {
-        shadowColor: 'black',
+        shadowColor: "black",
         shadowOffset: { height: -3 },
         shadowOpacity: 0.1,
-        shadowRadius: 3,
+        shadowRadius: 3
       },
       android: {
-        elevation: 20,
-      },
+        elevation: 20
+      }
     }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+    alignItems: "center",
+    backgroundColor: "#fbfbfb",
+    paddingVertical: 5
+  }
 });

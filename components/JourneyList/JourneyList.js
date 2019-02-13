@@ -122,12 +122,14 @@ export default class JourneyList extends React.Component {
       time={item.time}
       date={item.date}
       status={item.status}
+      navigate={navigation}
     />
   );
 
   _keyExtractor = (item, index) => item.id;
 
   render() {
+    const {navigate}=this.props.navigation;
     const journeys=this.state.journeys;
     return (
       <View style={styles.container}>

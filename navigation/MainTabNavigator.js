@@ -1,60 +1,70 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import {
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
 
-import TabBarIcon from '../components/TabBarIcon';
-import ExploreScreen from '../screens/ExploreScreen';
-import JourneysScreen from '../screens/JourneysScreen';
-import ProfilesScreen from '../screens/ProfilesScreen';
+import TabBarIcon from "../components/TabBarIcon";
+import ExploreScreen from "../screens/ExploreScreen";
+import JourneysScreen from "../screens/JourneysScreen";
+import ProfilesScreen from "../screens/ProfilesScreen";
+import JourneyDetailsScreen from "../screens/JourneyDetailsScreen";
 
 const ExploreStack = createStackNavigator({
-  Explore: ExploreScreen,
+  Explore: ExploreScreen
 });
 
 ExploreStack.navigationOptions = {
-  tabBarLabel: 'Explore',
+  tabBarLabel: "Explore",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-search${focused ? '' : ''}`
-          : 'md-information-circle'
+        Platform.OS === "ios"
+          ? `ios-search${focused ? "" : ""}`
+          : "md-information-circle"
       }
     />
-  ),
+  )
 };
 
-const JourneysStack = createStackNavigator({
-  Journeys: JourneysScreen,
-});
+const JourneysStack = createStackNavigator(
+  {
+    Journeys: JourneysScreen,
+    JourneyDetails: JourneyDetailsScreen
+  },
+  {
+    initialRouteName: "Journeys"
+  }
+);
 
 JourneysStack.navigationOptions = {
-  tabBarLabel: 'Journeys',
+  tabBarLabel: "Journeys",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-leaf' : 'md-link'}
+      name={Platform.OS === "ios" ? "ios-leaf" : "md-link"}
     />
-  ),
+  )
 };
 
 const ProfilesStack = createStackNavigator({
-  Profles: ProfilesScreen,
+  Profiles: ProfilesScreen
 });
 
 ProfilesStack.navigationOptions = {
-  tabBarLabel: 'Profile',
+  tabBarLabel: "Profile",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-person' : 'md-options'}
+      name={Platform.OS === "ios" ? "ios-person" : "md-options"}
     />
-  ),
+  )
 };
 
 export default createBottomTabNavigator({
   ExploreStack,
   JourneysStack,
-  ProfilesStack,
+  ProfilesStack
 });

@@ -1,12 +1,12 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View, Switch} from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, Switch } from "react-native";
 import { Avatar } from "react-native-elements";
 
 export default class Profile extends React.Component {
-    toggleTheSwitch=(value)=>{
-        this.setState({switchValue:value});
-    }
-    
+  toggleTheSwitch = value => {
+    this.setState({ switchValue: value });
+  };
+
   render() {
     return (
       <View style={{ flex: 1, flexDrection: "colmun" }}>
@@ -27,7 +27,8 @@ export default class Profile extends React.Component {
               </Text>
             </View>
           </View>
-          <Avatar style={{flex:1}}
+          <Avatar
+            style={{ flex: 1 }}
             source={{
               uri:
                 "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg"

@@ -7,14 +7,16 @@ import {
   } from 'react-native';
 
 export default class JourneyItem extends React.Component {
-    _onShowJourneyDetails=()=>{
+    
+    onShowJourneyDetails=()=>{
       //const id=this.props.id;
       this.props.navigation.navigate('JourneyDetails');
     }
 
     render() {
+        const {navigate}=this.props.navigation;
         return(
-          <TouchableOpacity onPress={this._onShowJourneyDetails}>
+          <TouchableOpacity onPress={()=>navigate('JourneyDetails')}>
           <View style={styles.rowContainer}>
             <View style={styles.rowText}>
               <Text style={styles.title} numberOfLines={2} ellipsizeMode ={'tail'}>
