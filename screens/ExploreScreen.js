@@ -11,6 +11,7 @@ import {
 import { CheckBox } from "react-native-elements";
 import Map from "../components/Map/Map";
 import ButtonIcon from "../components/ButtonIcon";
+import JourneyInput from '../components/JourneyInput/JourneyInput';
 
 export default class ExploreScreen extends React.Component {
   static navigationOptions = {
@@ -20,6 +21,7 @@ export default class ExploreScreen extends React.Component {
   constructor() {
     super();
     this.state = {
+      isSelectRole:true,
       isPassenger: true
     };
   }
@@ -27,10 +29,12 @@ export default class ExploreScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.state.isSelectRole && <JourneyInput handleBack={()=>{this.setState({isSelectRole:true})}} />}
         <Map />
+        {this.state.isSelectRole &&
         <View style={styles.tabBarContainer}>
-          <Text>I'm a</Text>
-          <View style={{ flex: 3, flexDirection: "column",alignItems:'left',marginLeft:50 }}>
+          <Text style={styles.tabBarText}>I'm a</Text>
+          <View style={{ flex: 3, flexDirection: "column",alignItems:'left',marginLeft:10 }}>
             <CheckBox
               center
               title="Passenger"
@@ -56,10 +60,12 @@ export default class ExploreScreen extends React.Component {
                   ? `ios-add-circle`
                   : "md-information-circle"
               }
+              onPress={()=>this.setState({isSelectRole:false})}
             />
             </TouchableOpacity>
           </View>
         </View>
+        }
       </View>
     );
   }
@@ -90,5 +96,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fbfbfb",
     paddingVertical: 5
+  },
+  tabBarText:{
+    paddingLeft:20,
+    fontSize:20
   }
 });

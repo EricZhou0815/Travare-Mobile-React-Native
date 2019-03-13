@@ -10,13 +10,13 @@ export default class JourneyItem extends React.Component {
     
     onShowJourneyDetails=()=>{
       //const id=this.props.id;
-      this.props.navigation.navigate('JourneyDetails');
+      /*this.props.navigation.navigate('JourneyDetails');*/
     }
 
     render() {
-        const {navigate}=this.props.navigation;
+        /*const {navigate}=this.props.navigation;*/
         return(
-          <TouchableOpacity onPress={()=>navigate('JourneyDetails')}>
+          <TouchableOpacity /*onPress={()=>navigate('JourneyDetails')}*/>
           <View style={styles.rowContainer}>
             <View style={styles.rowText}>
               <Text style={styles.title} numberOfLines={2} ellipsizeMode ={'tail'}>

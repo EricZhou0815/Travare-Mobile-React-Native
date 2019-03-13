@@ -32,10 +32,10 @@ ExploreStack.navigationOptions = {
 const JourneysStack = createStackNavigator(
   {
     Journeys: JourneysScreen,
-    JourneyDetails: JourneyDetailsScreen
+    /*JourneyDetails: JourneyDetailsScreen
   },
   {
-    initialRouteName: "Journeys"
+    initialRouteName: "Journeys"*/
   }
 );
 

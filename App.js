@@ -1,14 +1,20 @@
-import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font, Icon } from 'expo';
-import AppNavigator from './navigation/AppNavigator';
+import React from "react";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { AppLoading, Asset, Font, Icon } from "expo";
+import AppNavigator from "./navigation/AppNavigator";
+import Splash from "./components/Loading/Splash";
 
 export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, isLoadingComplete: false };
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 3000);
+  }
 
   render() {
+    const { isLoading } = this.state;
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -18,14 +24,16 @@ export default class App extends React.Component {
         />
       );
     } else {
+      let mainScreen = isLoading === true ? <Splash /> : <AppNavigator />;
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          {mainScreen}
         </View>
       );
     }
   }
+  
 
   _loadResourcesAsync = async () => {
     return Promise.all([
@@ -57,6 +65,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: "#fff"
+  }
 });
