@@ -1,8 +1,14 @@
 ## Travare-Mobile-React-Native (Ongoing)
 
-# Back-end code link
+A mobile app as a solution to the Deloitte Online Challenge.
 
-![Travare Rest API](https://github.com/EricZhou0815/Travare-Server)
+# Project Related Link
+
+[Deloitte Online Challenge Project Home Page](https://ideation-deloittegarage.bemyapp.com/#/projects/5c3e30c57cc0b60004dc17c5)
+
+[Project product landing page.](https://ericzhou0815.github.io/Travare-landing-page/)
+
+[Travare Rest API Folder](https://github.com/EricZhou0815/Travare-Server)
 
 # UI Design (Sketch)
 
