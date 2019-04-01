@@ -1,5 +1,9 @@
 ## Travare-Mobile-React-Native (Ongoing)
 
+# Back-end code link
+
+![Travare Rest API](https://github.com/EricZhou0815/Travare-Server)
+
 # UI Design (Sketch)
 
 - UI Design 1
